@@ -16,7 +16,7 @@ cur_classifiers = [
 
 setuptools.setup(
     name="mucri",
-    version="0.0.2",
+    version="0.0.3",
     author='Abin Simon',
     author_email='abinsimon10@gmail.com',
     description="Quickly scrape multiple pages",
