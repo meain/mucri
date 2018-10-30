@@ -1,7 +1,6 @@
 # Mucri
 
-A python framework for extracting the same stuff from a lot of webpages.
-Just a tiny tiny wrapper over `asyncio`!
+Quickly fetch a lot of pages/apis using python `asyncio`.
 
 
 ## Installation
