@@ -5,7 +5,7 @@ Quickly fetch a lot of pages/apis using python `asyncio`.
 
 ## Installation
 
-> Only python 3.6_+
+> Only python 3.6+
 
 ```sh
 pip isntall mucri
