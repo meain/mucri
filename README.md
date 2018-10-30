@@ -17,6 +17,7 @@ pip isntall mucri
 from mucri import fetch_links
 
 links = [
+    "http://meain.github.io",
     { "url": "http://somelink" },
     {
         "url": "http://fakelink",

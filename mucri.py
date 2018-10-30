@@ -26,11 +26,18 @@ def fetch_pages(links=None):
     loop = asyncio.get_event_loop()
 
     for link in links:
-        action = link.get("action", "get")
-        url = link["url"]
-        data = link.get("data", {})
-        headers = link.get("headers", {})
-        resp_type = link.get("resp_type", "text")
+        if isinstance(link, str):
+            url = link
+            action = "get"
+            data = {}
+            headers = {}
+            resp_type = "text"
+        elif isinstance(link, dict):
+            action = link.get("action", "get")
+            url = link["url"]
+            data = link.get("data", {})
+            headers = link.get("headers", {})
+            resp_type = link.get("resp_type", "text")
 
         tasks.append(
             asyncio.ensure_future(_fetch_link(action, url, data, headers, resp_type))
@@ -43,5 +50,10 @@ def fetch_pages(links=None):
 
 
 if __name__ == "__main__":
-    links = [{"url": "https://google.com"}, {"url": "http://github.com"}]
+    links = [
+        "http://meain.github.io",
+        {"url": "https://google.com"},
+        {"url": "http://github.com"},
+    ]
     result = fetch_pages(links)
+    print(len(result))
