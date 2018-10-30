@@ -43,5 +43,5 @@ def fetch_pages(links=None):
 
 
 if __name__ == "__main__":
-    links = [{"url": "https://google.com"}, {'url': 'http://github.com'}]
+    links = [{"url": "https://google.com"}, {"url": "http://github.com"}]
     result = fetch_pages(links)
