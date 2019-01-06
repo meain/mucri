@@ -24,7 +24,7 @@ links = [
         "action": "get", # get | post
         "data": {},
         "headers": {},
-        "resp_type": "text", # text | json
+        "resp_type": "text", # text | json | image
     }
 ]
 
