@@ -18,36 +18,40 @@ async def _fetch_link(action, url, data, headers, resp_type):
         return None
 
 
-def fetch_pages(links=None):
+def fetch_pages(links=None, concurrency=20):
     if not links:
         print("No links provided to fetch")
         return
 
-    tasks = []
     fetched_data = []
     loop = asyncio.get_event_loop()
+    chunks = [links[x : x + 100] for x in range(0, len(links), concurrency)]
 
-    for link in links:
-        if isinstance(link, str):
-            url = link
-            action = "get"
-            data = {}
-            headers = {}
-            resp_type = "text"
-        elif isinstance(link, dict):
-            action = link.get("action", "get")
-            url = link["url"]
-            data = link.get("data", {})
-            headers = link.get("headers", {})
-            resp_type = link.get("resp_type", "text")
+    for chunk in chunks:
+        tasks = []
+        for link in chunk:
+            if isinstance(link, str):
+                url = link
+                action = "get"
+                data = {}
+                headers = {}
+                resp_type = "text"
+            elif isinstance(link, dict):
+                action = link.get("action", "get")
+                url = link["url"]
+                data = link.get("data", {})
+                headers = link.get("headers", {})
+                resp_type = link.get("resp_type", "text")
 
-        tasks.append(
-            asyncio.ensure_future(_fetch_link(action, url, data, headers, resp_type))
-        )
+            tasks.append(
+                asyncio.ensure_future(
+                    _fetch_link(action, url, data, headers, resp_type)
+                )
+            )
 
-    loop.run_until_complete(asyncio.wait(tasks))
-    for task in tasks:
-        fetched_data.append(task.result())
+        loop.run_until_complete(asyncio.wait(tasks))
+        for task in tasks:
+            fetched_data.append(task.result())
     return fetched_data
 
 
