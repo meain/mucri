@@ -14,7 +14,7 @@ pip isntall mucri
 ## Usage
 
 ```python
-from mucri import fetch_links
+from mucri import fetch_pages
 
 links = [
     "http://meain.github.io",
@@ -28,6 +28,6 @@ links = [
     }
 ]
 
-results = fetch_links(links) # fetches all of them asynchronously
+results = fetch_pages() # fetches all of them asynchronously
 
 ```

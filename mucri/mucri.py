@@ -13,6 +13,8 @@ async def _fetch_link(action, url, data, headers, resp_type):
             return await resp.text()
         elif resp_type == "json":
             return await resp.json()
+        elif resp_type == "image":
+            return await resp.read()
         return None
 
 
