@@ -23,9 +23,9 @@ from mucri import fetch_pages
 
 # links can be a single string or a dict with specific instructions
 links = [
-    "http://meain.github.io",
-    { "url": "http://somelink" },
-    {
+    "http://meain.github.io",  # Can be just a url
+    { "url": "http://somelink" }, # or a dict with url key
+    { # for more complex stuff
         "url": "http://fakelink",
         "action": "get", # get | post
         "data": {},
@@ -35,5 +35,4 @@ links = [
 ]
 
 results = fetch_pages(links) # fetches all of them asynchronously
-
 ```
