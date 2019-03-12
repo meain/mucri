@@ -25,7 +25,7 @@ def fetch_pages(links=None, concurrency=20):
 
     fetched_data = []
     loop = asyncio.get_event_loop()
-    chunks = [links[x : x + 100] for x in range(0, len(links), concurrency)]
+    chunks = [links[x : x + concurrency] for x in range(0, len(links), concurrency)]
 
     for chunk in chunks:
         tasks = []
@@ -60,6 +60,6 @@ if __name__ == "__main__":
         "http://meain.github.io",
         {"url": "https://google.com"},
         {"url": "http://github.com"},
-    ]
+    ] * 40
     result = fetch_pages(links)
     print(len(result))
