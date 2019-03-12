@@ -34,6 +34,6 @@ links = [
     }
 ]
 
-results = fetch_pages() # fetches all of them asynchronously
+results = fetch_pages(links) # fetches all of them asynchronously
 
 ```
