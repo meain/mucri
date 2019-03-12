@@ -60,6 +60,6 @@ if __name__ == "__main__":
         "http://meain.github.io",
         {"url": "https://google.com"},
         {"url": "http://github.com"},
-    ] * 40
+    ] * 10
     result = fetch_pages(links)
     print(len(result))
