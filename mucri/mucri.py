@@ -4,18 +4,21 @@ import aiohttp
 
 async def _fetch_link(action, url, data, headers, resp_type):
     async with aiohttp.ClientSession() as session:
-        if action == "get":
-            resp = await session.get(url)
-        elif action == "post":
-            resp = await session.post(url, data=data, headers=headers)
+        try:
+            if action == "get":
+                resp = await session.get(url)
+            elif action == "post":
+                resp = await session.post(url, data=data, headers=headers)
 
-        if resp_type == "text":
-            return await resp.text()
-        elif resp_type == "json":
-            return await resp.json()
-        elif resp_type == "image":
-            return await resp.read()
-        return None
+            if resp_type == "text":
+                return await resp.text()
+            elif resp_type == "json":
+                return await resp.json()
+            elif resp_type == "image":
+                return await resp.read()
+            return None
+        except Exception as e:
+            return None
 
 
 def fetch_pages(links=None, concurrency=20):

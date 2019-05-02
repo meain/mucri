@@ -23,7 +23,7 @@ install_requires = ['aiohttp']
 
 setuptools.setup(
     name="mucri",
-    version="0.0.8",
+    version="0.0.9",
     author='Abin Simon',
     author_email='abinsimon10@gmail.com',
     description="Quickly fetch multiple pages",
